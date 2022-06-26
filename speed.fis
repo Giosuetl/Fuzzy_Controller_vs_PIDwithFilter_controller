@@ -1,0 +1,47 @@
+[System]
+Name='speed'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='error'
+Range=[0 0.2]
+NumMFs=3
+MF1='el':'trimf',[0 0.04 0.08]
+MF2='em':'trimf',[0.06 0.1 0.14]
+MF3='eh':'trimf',[0.12 0.16 0.2]
+
+[Input2]
+Name='changeinerror'
+Range=[0 0.8]
+NumMFs=3
+MF1='ecl':'trimf',[0 0.15 0.3]
+MF2='ecm':'trimf',[0.250740055504163 0.400740055504163 0.550740055504163]
+MF3='ech':'trimf',[0.5 0.65 0.8]
+
+[Output1]
+Name='control'
+Range=[0 0.8]
+NumMFs=3
+MF1='ol':'trimf',[0 0.15 0.3]
+MF2='om':'trimf',[0.25 0.4 0.55]
+MF3='oh':'trimf',[0.5 0.65 0.8]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 2 (1) : 1
+1 3, 2 (1) : 1
+2 1, 1 (1) : 1
+2 2, 2 (1) : 1
+2 3, 3 (1) : 1
+3 1, 2 (1) : 1
+3 2, 2 (1) : 1
+3 3, 3 (1) : 1
